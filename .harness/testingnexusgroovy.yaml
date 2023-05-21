@@ -1,0 +1,50 @@
+pipeline:
+  name: testing-nexus-groovy
+  identifier: testingnexusgroovy
+  projectIdentifier: NgLabs
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: gitconnectordhruba
+        repoName: nexus-repository-publisher
+        build: <+input>
+  stages:
+    - stage:
+        name: test
+        identifier: test
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_3
+                  identifier: Run_3
+                  spec:
+                    shell: Sh
+                    command: "mvn clean package      "
+              - step:
+                  type: Plugin
+                  name: Plugin_1
+                  identifier: Plugin_1
+                  spec:
+                    connectorRef: harnessnew
+                    image: harnesscommunity/publish-nexus-repository:1.1.1
+                    settings:
+                      username: deploy-user
+                      password: testing-nexus
+                      server_url: https://2ccd-2405-201-a808-70b8-64aa-4d06-690d-aac4.ngrok-free.app/
+                      repository: raw-github-action-test
+                      attributes: "-CgroupId=org.v6testing -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"
+                      format: maven2
+                      filename: /target/example-1.0.jar
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
