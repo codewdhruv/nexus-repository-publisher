@@ -14,7 +14,6 @@ pipeline:
     - stage:
         name: test
         identifier: test
-        description: ""
         type: CI
         spec:
           cloneCodebase: true
@@ -55,3 +54,5 @@ pipeline:
           runtime:
             type: Cloud
             spec: {}
+          sharedPaths:
+            - /target/
