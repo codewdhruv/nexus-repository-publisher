@@ -54,5 +54,3 @@ pipeline:
           runtime:
             type: Cloud
             spec: {}
-          sharedPaths:
-            - /harness/target/
