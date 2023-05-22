@@ -47,7 +47,7 @@ pipeline:
                       repository: raw-github-action-test
                       attributes: "-CgroupId=org.v6testing -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"
                       format: maven2
-                      filename: /target/example-1.0.jar
+                      filename: ./target/example-1.0.jar
           platform:
             os: Linux
             arch: Amd64
