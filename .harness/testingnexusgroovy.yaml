@@ -27,13 +27,6 @@ pipeline:
                     shell: Sh
                     command: "mvn clean package      "
               - step:
-                  type: Run
-                  name: Run_2
-                  identifier: Run_2
-                  spec:
-                    shell: Sh
-                    command: ls
-              - step:
                   type: Plugin
                   name: Plugin_1
                   identifier: Plugin_1
