@@ -43,8 +43,8 @@ pipeline:
                     settings:
                       username: deploy-user
                       password: testing-nexus
-                      server_url: https://2ccd-2405-201-a808-70b8-64aa-4d06-690d-aac4.ngrok-free.app/
-                      repository: raw-github-action-test
+                      server_url: http://34.235.128.201:8081/
+                      repository: maven-releases
                       attributes: "-CgroupId=org.v6testing -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"
                       format: maven2
                       filename: ./target/example-1.0.jar
