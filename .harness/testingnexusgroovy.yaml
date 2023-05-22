@@ -55,4 +55,4 @@ pipeline:
             type: Cloud
             spec: {}
           sharedPaths:
-            - /nexus-repository-publisher/tree/main/target/
+            - /harness/target/
