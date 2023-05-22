@@ -45,7 +45,7 @@ pipeline:
                       password: testing-nexus
                       server_url: http://34.235.128.201:8081/
                       repository: maven-releases
-                      attributes: "-CgroupId=org.v6testing -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"
+                      attributes: "-CgroupId=org.testing -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"
                       format: maven2
                       filename: ./target/example-1.0.jar
           platform:
