@@ -1,51 +1,42 @@
----
 pipeline:
-  projectIdentifier: "NgLabs"
-  orgIdentifier: "default"
+  projectIdentifier: NgLabs
+  orgIdentifier: default
   tags: {}
   properties:
     ci:
       codebase:
-        connectorRef: "gitconnectordhruba"
-        repoName: "nexus-repository-publisher"
-        build: "<+input>"
+        connectorRef: gitconnectordhruba
+        repoName: testing-gar-plugin
+        build: <+input>
   stages:
-  - stage:
-      name: "test"
-      identifier: "test"
-      type: "CI"
-      spec:
-        cloneCodebase: true
-        execution:
-          steps:
-          - step:
-              type: "Run"
-              name: "Build"
-              identifier: "Run_3"
-              spec:
-                shell: "Sh"
-                command: "mvn clean package      "
-          - step:
-              type: "Plugin"
-              name: "Plugin_1"
-              identifier: "Plugin_1"
-              spec:
-                connectorRef: "harnessnew"
-                image: "harnesscommunity/publish-nexus-repository:1.1.1"
-                settings:
-                  username: "deploy-user"
-                  password: "testing-nexus"
-                  server_url: "http://34.235.128.201:8081/"
-                  repository: "maven-releases"
-                  attributes: "-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0\
-                    \ -Aextension=jar -Aclassifier=bin"
-                  format: "maven2"
-                  filename: "./target/example-1.0.jar"
-        platform:
-          os: "Linux"
-          arch: "Amd64"
-        runtime:
-          type: "Cloud"
-          spec: {}
-  identifier: "testinggarplugin"
-  name: "testing-gar-plugin"
+    - stage:
+        name: test
+        identifier: test
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Plugin
+                  name: Plugin_1
+                  identifier: Plugin_1
+                  spec:
+                    connectorRef: harnessnew
+                    image: harnesscommunity/publish-nexus-repository:1.1.1
+                    settings:
+                      username: deploy-user
+                      password: testing-nexus
+                      server_url: http://34.235.128.201:8081/
+                      repository: maven-releases
+                      attributes: "-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"
+                      format: maven2
+                      filename: ./target/example-1.0.jar
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+  identifier: testinggarplugin
+  name: testing-gar-plugin
